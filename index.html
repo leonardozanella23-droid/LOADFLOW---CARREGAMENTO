@@ -16,73 +16,45 @@
     <div class="brand"><span class="brand-mark">⇧</span><span>Load<span class="accent">Flow</span></span></div>
     <span class="environment">Gestão de carregamento</span>
   </header>
-
   <main class="container">
-    <section id="config-view" class="view hidden">
-      <div class="panel"><h1>Configuração pendente</h1><p>Confira o arquivo <code>config.js</code> e execute o <code>setup-loadflow.sql</code> no Supabase.</p></div>
-    </section>
-
+    <section id="config-view" class="view hidden"><div class="panel"><h1>Configuração pendente</h1><p>Confira o arquivo <code>config.js</code> e execute o <code>setup-loadflow.sql</code> no Supabase.</p></div></section>
     <section id="checkin-view" class="view hidden">
-      <div class="hero">
-        <span class="eyebrow">CHECK-IN DE CARREGAMENTO</span>
-        <h1>Chegou para carregar?</h1>
-        <p>Informe seus dados e o número da Load para entrar na fila de carregamento.</p>
-      </div>
+      <div class="hero"><span class="eyebrow">CHECK-IN DE CARREGAMENTO</span><h1>Chegou para carregar?</h1><p>Informe seus dados e o número da Load para entrar na fila de carregamento.</p></div>
       <div class="panel">
         <form id="checkin-form" novalidate>
-          <label for="first-name">Nome</label>
-          <input id="first-name" autocomplete="given-name" maxlength="60" required placeholder="Ex.: João" />
-          <label for="last-name">Sobrenome</label>
-          <input id="last-name" autocomplete="family-name" maxlength="80" required placeholder="Ex.: Silva" />
-          <label for="plate">Placa do veículo</label>
-          <input id="plate" maxlength="7" minlength="7" autocapitalize="characters" spellcheck="false" required placeholder="ABC1D23" />
+          <label for="first-name">Nome</label><input id="first-name" autocomplete="given-name" maxlength="60" required placeholder="Ex.: João" />
+          <label for="last-name">Sobrenome</label><input id="last-name" autocomplete="family-name" maxlength="80" required placeholder="Ex.: Silva" />
+          <label for="plate">Placa do veículo</label><input id="plate" maxlength="7" minlength="7" autocapitalize="characters" spellcheck="false" required placeholder="ABC1D23" />
           <small>Placa brasileira antiga (ABC1234) ou Mercosul (ABC1D23).</small>
-          <label for="load-number">Número da Load</label>
-          <input id="load-number" maxlength="40" required placeholder="Ex.: 12345678" />
+          <label for="load-number">Número da Load</label><input id="load-number" maxlength="40" required placeholder="Ex.: 12345678" />
           <div id="checkin-error" role="alert" class="message error hidden"></div>
           <button id="checkin-submit" type="submit" class="button primary">Entrar na fila de carregamento</button>
         </form>
       </div>
       <p class="muted centered">Já fez check-in neste celular? <a href="#acompanhar" id="resume-link">Acompanhar minha senha</a></p>
     </section>
-
     <section id="tracking-view" class="view hidden">
       <div class="panel tracking">
-        <span class="eyebrow">SUA SENHA</span>
-        <h1 id="ticket-number">—</h1>
-        <div id="ticket-status" class="pill">Consultando...</div>
-        <p id="ticket-message">Buscando sua posição na fila.</p>
+        <span class="eyebrow">SUA SENHA</span><h1 id="ticket-number">—</h1><div id="ticket-status" class="pill">Consultando...</div><p id="ticket-message">Buscando sua posição na fila.</p>
         <div class="tracking-details four">
-          <div><span>Load</span><strong id="ticket-load">—</strong></div>
-          <div><span>Placa</span><strong id="ticket-plate">—</strong></div>
-          <div><span>Posição</span><strong id="ticket-position">—</strong></div>
-          <div><span>Doca</span><strong id="ticket-dock">—</strong></div>
+          <div><span>Load</span><strong id="ticket-load">—</strong></div><div><span>Placa</span><strong id="ticket-plate">—</strong></div><div><span>Posição</span><strong id="ticket-position">—</strong></div><div><span>Doca</span><strong id="ticket-dock">—</strong></div>
         </div>
         <div class="time-card"><span>Tempo de permanência desde a chegada</span><strong id="ticket-dwell">00:00</strong></div>
         <div id="tracking-error" role="alert" class="message error hidden"></div>
-        <div id="push-box" class="push-box">
-          <button class="button primary" id="push-enable" type="button">Ativar aviso mesmo com o site minimizado</button>
-          <p id="push-help" class="muted">Recomendado: ative para receber a chamada quando uma doca for liberada.</p>
-        </div>
+        <div id="push-box" class="push-box"><button class="button primary" id="push-enable" type="button">Ativar aviso mesmo com o site minimizado</button><p id="push-help" class="muted">Recomendado: ative para receber a chamada quando uma doca for liberada.</p></div>
         <button class="button secondary" id="tracking-refresh">Atualizar agora</button>
       </div>
       <p class="muted centered">Com os avisos ativados, você pode minimizar o site e receber a chamada no celular.</p>
     </section>
-
     <section id="login-view" class="view hidden">
-      <div class="panel auth-panel">
-        <span class="eyebrow">ÁREA RESTRITA</span>
-        <h1>Acesso do carregamento</h1>
-        <p>Entre com um usuário administrador já autorizado no DockFlow.</p>
+      <div class="panel auth-panel"><span class="eyebrow">ÁREA RESTRITA</span><h1>Acesso do carregamento</h1><p>Entre com um usuário administrador já autorizado no DockFlow.</p>
         <form id="login-form">
           <label for="login-email">E-mail</label><input id="login-email" type="email" autocomplete="username" required />
           <label for="login-password">Senha</label><input id="login-password" type="password" autocomplete="current-password" required />
-          <div class="message error hidden" id="login-error" role="alert"></div>
-          <button class="button primary" id="login-submit">Entrar</button>
+          <div class="message error hidden" id="login-error" role="alert"></div><button class="button primary" id="login-submit">Entrar</button>
         </form>
       </div>
     </section>
-
     <section id="admin-view" class="view hidden">
       <div class="admin-head">
         <div><span class="eyebrow">CENTRAL DE CARREGAMENTO</span><h1>Painel de carregamento</h1><p id="last-update" class="muted">Atualizando...</p></div>
@@ -95,9 +67,8 @@
         <article class="stat"><span>Permanência média hoje</span><strong id="avg-dwell">—</strong></article>
       </div>
       <div id="admin-error" role="alert" class="message error hidden"></div>
-
       <section class="panel"><div class="section-heading"><h2>4 docas de carregamento</h2><button id="admin-refresh" class="button secondary compact">Atualizar</button></div><div id="dock-list" class="dock-grid"></div></section>
-      <section class="panel"><h2>Fila de chegada</h2><p class="muted">A chamada respeita a ordem de chegada.</p><div id="queue-list" class="queue-list"></div></section>
+      <section class="panel"><h2>Fila de chegada</h2><p class="muted">A ordem pode ser alterada manualmente pelo administrador.</p><div id="queue-list" class="queue-list"></div></section>
       <section class="panel"><h2>Em carregamento</h2><div id="active-list" class="queue-list"></div></section>
       <section class="panel"><h2>Finalizados hoje</h2><div id="history-list" class="queue-list"></div></section>
       <section class="panel"><h2>QR Code para check-in</h2><p class="muted">Imprima e fixe na entrada do carregamento.</p><div class="qr-wrap"><div id="qrcode"></div><p id="qr-url" class="muted small"></p></div><button class="button secondary" id="print-qr">Imprimir QR Code</button></section>
@@ -106,9 +77,6 @@
   <footer>LoadFlow · Gestão de carregamento</footer>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
-  <script src="config.js"></script>
-  <script src="app.js"></script>
-  <script src="historico.js"></script>
-  <script src="alerta-sonoro.js"></script>
+  <script src="config.js"></script><script src="app.js"></script><script src="historico.js"></script><script src="alerta-sonoro.js"></script><script src="ordem-fila.js"></script>
 </body>
 </html>
